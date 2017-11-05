@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<options>
+	</options>
+	<parameters>
+	</parameters>
+	<columns>
+		<column name="SPName1" isolationLevel="Read Uncommitted" input="where 1 = 1" inputType="SQL" output="1" outputType="StoredProcedureName" hidden="True" enabled="True" width="100" />
+		<column name="SPName" isolationLevel="Read Uncommitted" input="where 1 = 1" inputType="SQL" output="replace(SPName1, 'dbo.', '')" outputType="SQL" hidden="False" enabled="True" width="100" />
+		<column name="TextDataCleaned1" isolationLevel="Read Uncommitted" input="where TextData not like 'exec %'" inputType="SQL" output="select convert(varchar(50), ltrim(rtrim(upper(replace(replace(replace(replace(replace(replace(replace(TextData, char(13) + char(10), ' '), char(9), ' ') ,' ', '{}'), '}{', ''), '{}', ' '), '( ', '('), ' )', ')')))))" outputType="SQL" hidden="True" enabled="True" width="100" />
+		<column name="TextDataCleaned" isolationLevel="Read Uncommitted" input="where 1 = 1" inputType="SQL" output="select&#xD;&#xA;case&#xD;&#xA;	when SPName != '' then SPName&#xD;&#xA;	when TextDataCleaned1 != '' then TextDataCleaned1&#xD;&#xA;end" outputType="SQL" hidden="False" enabled="True" width="114" />
+	</columns>
+</root>

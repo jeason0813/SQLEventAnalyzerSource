@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (C) 2017 Lars Hove Christiansen
+http://virtcore.com
+
+This file is a part of SQL Event Analyzer
+
+	SQL Event Analyzer is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	SQL Event Analyzer is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with SQL Event Analyzer. If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="SQL Event Analyzer" Language="1033" Version="1.0.0" Manufacturer="Lars Hove Christiansen" UpgradeCode="BB98E7D2-7535-4235-9943-526E51169B8E">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Description="SQL Event Analyzer 1.0.0" />
+		<Media Id="1" Cabinet="SQLEventAnalyzer.cab" EmbedCab="yes" />
+		<MajorUpgrade DowngradeErrorMessage="A later version of SQL Event Analyzer is already installed. Setup will now exit." AllowSameVersionUpgrades="yes" />
+
+		<WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+		<Icon Id="SQLEventAnalyzer.exe" SourceFile="$(var.SQLEventAnalyzer.TargetPath)" />
+		<Property Id="ARPPRODUCTICON" Value="SQLEventAnalyzer.exe" />
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+		<PropertyRef Id="NETFRAMEWORK20"/>
+
+		<Condition Message="This application requires .NET Framework 2.0. Please install the .NET Framework then run this installer again.">
+			<![CDATA[Installed OR NETFRAMEWORK20]]>
+		</Condition>
+
+		<Feature Id="Complete" Title="SQL Event Analyzer" Level="1" ConfigurableDirectory="INSTALLDIR">
+			<ComponentRef Id="MainExecutable" />
+			<ComponentRef Id="Documentation" />
+			<ComponentRef Id="ProgramMenuDir" />
+			<ComponentRef Id="RegistryEntries" />
+		</Feature>
+
+		<UI>
+			<UIRef Id="WixUI_InstallDir" />
+
+			<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="LicenseAgreementDlg" Order="2">1</Publish>
+			<Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="ChooseLanguage" Order="2">LicenseAccepted = "1"</Publish>
+
+			<Property Id="LANGUAGE" Secure="yes" Value="english" />
+
+			<Dialog Id="ChooseLanguage" Width="370" Height="270" Title="[ProductName] Setup">
+				<Control Id="RadioButtonGroupID" Type="RadioButtonGroup" X="30" Y="94" Width="305" Height="100" Property="LANGUAGE">
+					<RadioButtonGroup Property="LANGUAGE">
+						<RadioButton Value="english" X="0" Y="0" Width="200" Height="10" Text="English" />
+						<RadioButton Value="dansk" X="0" Y="20" Width="200" Height="10" Text="Dansk" />
+					</RadioButtonGroup>
+				</Control>
+				<Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="&amp;Back">
+					<Publish Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
+				</Control>
+				<Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="&amp;Next">
+					<Publish Event="NewDialog" Value="InstallDirDlg"></Publish>
+				</Control>
+				<Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="Cancel">
+					<Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+				</Control>
+				<Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="WixUI_Bmp_Banner" />
+				<Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes">
+					<Text>Please choose SQL Event Analyzer default language:</Text>
+				</Control>
+				<Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+				<Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes">
+					<Text>{\WixUI_Font_Title}Language</Text>
+				</Control>
+				<Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+			</Dialog>
+
+			<Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="ChooseLanguage" Order="2">1</Publish>
+			<Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+		</UI>
+
+		<Property Id="DISABLELAUNCHAFTERINSTALL" Value="0" />
+
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch application after install" />
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+		<Property Id="WixShellExecTarget" Value="[#SQLEventAnalyzer.exe]" />
+
+		<SetProperty Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" After="AppSearch" Value="">
+			DISABLELAUNCHAFTERINSTALL = "1"
+		</SetProperty>
+
+		<SetProperty Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" After="AppSearch" Value="">
+			DISABLELAUNCHAFTERINSTALL = "1"
+		</SetProperty>
+
+		<SetProperty Id="WixShellExecTarget" After="AppSearch" Value="">
+			DISABLELAUNCHAFTERINSTALL = "1"
+		</SetProperty>
+
+		<CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLDIR" Name="SQL Event Analyzer">
+					<Component Id="MainExecutable">
+						<File Id="SQLEventAnalyzer.exe" Source="$(var.SQLEventAnalyzer.TargetPath)" KeyPath="yes">
+							<Shortcut Id="startmenuApplication" Directory="ProductProgramMenuFolder" Name="SQL Event Analyzer" WorkingDirectory="INSTALLDIR" Icon="SQLEventAnalyzer.exe" IconIndex="0" Advertise="yes" />
+							<Shortcut Id="desktop" Directory="DesktopFolder" Name="SQL Event Analyzer" WorkingDirectory="INSTALLDIR" Icon="SQLEventAnalyzer.exe" IconIndex="0" Advertise="yes" />
+						</File>
+					</Component>
+					<Component Id="Documentation" Guid="AC18433E-5423-4D78-9825-3CC6C93FCF53">
+						<File Id="Documentation" Source="$(var.SQLEventAnalyzer.TargetDir)SQLEventAnalyzer.pdf" KeyPath="yes">
+							<Shortcut Id="startmenuDocumentation" Directory="ProductProgramMenuFolder" Name="Hjælp" WorkingDirectory="INSTALLDIR" Advertise="yes" />
+						</File>
+					</Component>
+				</Directory>
+			</Directory>
+
+			<Directory Id="ProgramMenuFolder" Name="Programs">
+				<Directory Id="ProductProgramMenuFolder" Name="SQL Event Analyzer">
+					<Component Id="ProgramMenuDir">
+						<CreateFolder Directory="ProductProgramMenuFolder" />
+						<RemoveFolder Id="RemoveProductProgramMenuFolder" Directory="ProductProgramMenuFolder" On="uninstall" />
+						<RegistryValue Root="HKCU" Key="Software\Lars Hove Christiansen\SQLEventAnalyzer" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+						<RemoveRegistryKey Id="RemoveRegistryEntries" Action="removeOnUninstall" Root="HKCU" Key="Software\Lars Hove Christiansen\SQLEventAnalyzer" />
+					</Component>
+				</Directory>
+			</Directory>
+
+			<Directory Id="DesktopFolder" Name="Desktop" />
+
+			<Component Id="RegistryEntries">
+				<RegistryValue Root="HKLM" Key="Software\Lars Hove Christiansen\SQLEventAnalyzer" Type="string" Name="Language" Value="[LANGUAGE]" KeyPath="yes" />
+			</Component>
+		</Directory>
+	</Product>
+</Wix>

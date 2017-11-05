@@ -1,0 +1,694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A6337AA5-9E59-4E78-8073-7CB17F07BB86}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SQLEventAnalyzer</RootNamespace>
+    <AssemblyName>SQLEventAnalyzer</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icons\report_key.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoForm.designer.cs">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckDirectoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckDirectoryForm.Designer.cs">
+      <DependentUpon>CheckDirectoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeConnectionForm.Designer.cs">
+      <DependentUpon>ChangeConnectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboBoxGroupStatisticsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComboBoxGroupStatisticsUserControl.Designer.cs">
+      <DependentUpon>ComboBoxGroupStatisticsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomColumnsCheckForUpdatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomColumnsCheckForUpdatesForm.Designer.cs">
+      <DependentUpon>CustomColumnsCheckForUpdatesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckForUpdatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckForUpdatesForm.Designer.cs">
+      <DependentUpon>CheckForUpdatesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColumnCollection.cs" />
+    <Compile Include="ColumnHelper.cs" />
+    <Compile Include="ColumnPropertiesHandler.cs" />
+    <Compile Include="ComboBoxCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBoxGroupUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComboBoxGroupUserControl.Designer.cs">
+      <DependentUpon>ComboBoxGroupUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommandLineParametersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommandLineParametersForm.Designer.cs">
+      <DependentUpon>CommandLineParametersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompressionHandler.cs" />
+    <Compile Include="ConfigHandler.cs" />
+    <Compile Include="ConnectionDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionDialogForm.Designer.cs">
+      <DependentUpon>ConnectionDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionStringSecurity.cs" />
+    <Compile Include="ExportToSql.cs" />
+    <Compile Include="ExportToPtt.cs" />
+    <Compile Include="EncryptPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EncryptPasswordForm.Designer.cs">
+      <DependentUpon>EncryptPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FillParameterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FillParameterForm.Designer.cs">
+      <DependentUpon>FillParameterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filter1ContentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filter1ContentUserControl.Designer.cs">
+      <DependentUpon>Filter1ContentUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetTextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetTextForm.Designer.cs">
+      <DependentUpon>GetTextForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportSessionInfo.cs" />
+    <Compile Include="ImportSessionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportSessionForm.designer.cs">
+      <DependentUpon>ImportSessionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlineSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnlineSettingsForm.Designer.cs">
+      <DependentUpon>OnlineSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputHandler.cs" />
+    <Compile Include="Option.cs" />
+    <Compile Include="Parameter.cs" />
+    <Compile Include="CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ErrorFormParams.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SavedSearchesHandler.cs" />
+    <Compile Include="SessionHelper.cs" />
+    <Compile Include="SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimelineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimelineForm.Designer.cs">
+      <DependentUpon>TimelineForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SessionSelectorUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SessionSelectorUserControl.Designer.cs">
+      <DependentUpon>SessionSelectorUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SessionHandler.cs" />
+    <Compile Include="InputSourceUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InputSourceUserControl.Designer.cs">
+      <DependentUpon>InputSourceUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHandler.cs" />
+    <Compile Include="ViewStatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewStatisticsForm.designer.cs">
+      <DependentUpon>ViewStatisticsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatisticUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StatisticUserControl.Designer.cs">
+      <DependentUpon>StatisticUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewRowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewRowForm.designer.cs">
+      <DependentUpon>ViewRowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnattendedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnattendedForm.Designer.cs">
+      <DependentUpon>UnattendedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorFormHandler.cs" />
+    <Compile Include="ExportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportForm.Designer.cs">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filter.cs" />
+    <Compile Include="Filter2UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filter2UserControl.Designer.cs">
+      <DependentUpon>Filter2UserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HandleCLRForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HandleCLRForm.Designer.cs">
+      <DependentUpon>HandleCLRForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HandleColumnsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HandleColumnsForm.Designer.cs">
+      <DependentUpon>HandleColumnsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportToCsv.cs" />
+    <Compile Include="DalTranslator.cs" />
+    <Compile Include="Column.cs" />
+    <Compile Include="DynamicAssembly.cs" />
+    <Compile Include="Dal.cs" />
+    <Compile Include="DatabaseOperation.cs" />
+    <Compile Include="DataViewUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataViewUserControl.Designer.cs">
+      <DependentUpon>DataViewUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorForm.designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filter1UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filter1UserControl.Designer.cs">
+      <DependentUpon>Filter1UserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetDataForm.Designer.cs">
+      <DependentUpon>GetDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HandleColumnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HandleColumnForm.Designer.cs">
+      <DependentUpon>HandleColumnForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportTraceFileInfo.cs" />
+    <Compile Include="ListViewColumnSorter.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenericHelper.cs" />
+    <Compile Include="ManageColumnsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageColumnsForm.Designer.cs">
+      <DependentUpon>ManageColumnsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecentFilesHandler.cs" />
+    <Compile Include="RegistryHandler.cs" />
+    <Compile Include="SearchHistoryHandler.cs" />
+    <Compile Include="SearchListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchListForm.Designer.cs">
+      <DependentUpon>SearchListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchTextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchTextForm.Designer.cs">
+      <DependentUpon>SearchTextForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SplitContainerGrip.cs" />
+    <Compile Include="TraceFileData.cs" />
+    <Compile Include="TraceFileHandler.cs" />
+    <Compile Include="TraceFileSelectorUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TraceFileSelectorUserControl.Designer.cs">
+      <DependentUpon>TraceFileSelectorUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportTraceFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportTraceFileForm.designer.cs">
+      <DependentUpon>ImportTraceFileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TraceRecordingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraceRecordingForm.Designer.cs">
+      <DependentUpon>TraceRecordingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Translator.cs" />
+    <Compile Include="XmlHelper.cs" />
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoForm.resx">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckDirectoryForm.resx">
+      <DependentUpon>CheckDirectoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeConnectionForm.resx">
+      <DependentUpon>ChangeConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComboBoxGroupStatisticsUserControl.resx">
+      <DependentUpon>ComboBoxGroupStatisticsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomColumnsCheckForUpdatesForm.resx">
+      <DependentUpon>CustomColumnsCheckForUpdatesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckForUpdatesForm.resx">
+      <DependentUpon>CheckForUpdatesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComboBoxGroupUserControl.resx">
+      <DependentUpon>ComboBoxGroupUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommandLineParametersForm.resx">
+      <DependentUpon>CommandLineParametersForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionDialogForm.resx">
+      <DependentUpon>ConnectionDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EncryptPasswordForm.resx">
+      <DependentUpon>EncryptPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FillParameterForm.resx">
+      <DependentUpon>FillParameterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter1ContentUserControl.resx">
+      <DependentUpon>Filter1ContentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetTextForm.resx">
+      <DependentUpon>GetTextForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportSessionForm.resx">
+      <DependentUpon>ImportSessionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OnlineSettingsForm.resx">
+      <DependentUpon>OnlineSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimelineForm.resx">
+      <DependentUpon>TimelineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SessionSelectorUserControl.resx">
+      <DependentUpon>SessionSelectorUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputSourceUserControl.resx">
+      <DependentUpon>InputSourceUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewStatisticsForm.resx">
+      <DependentUpon>ViewStatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatisticUserControl.resx">
+      <DependentUpon>StatisticUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewRowForm.resx">
+      <DependentUpon>ViewRowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnattendedForm.resx">
+      <DependentUpon>UnattendedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportForm.resx">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter2UserControl.resx">
+      <DependentUpon>Filter2UserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HandleCLRForm.resx">
+      <DependentUpon>HandleCLRForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HandleColumnsForm.resx">
+      <DependentUpon>HandleColumnsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataViewUserControl.resx">
+      <DependentUpon>DataViewUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter1UserControl.resx">
+      <DependentUpon>Filter1UserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetDataForm.resx">
+      <DependentUpon>GetDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HandleColumnForm.resx">
+      <DependentUpon>HandleColumnForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageColumnsForm.resx">
+      <DependentUpon>ManageColumnsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchListForm.resx">
+      <DependentUpon>SearchListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchTextForm.resx">
+      <DependentUpon>SearchTextForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraceFileSelectorUserControl.resx">
+      <DependentUpon>TraceFileSelectorUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportTraceFileForm.resx">
+      <DependentUpon>ImportTraceFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraceRecordingForm.resx">
+      <DependentUpon>TraceRecordingForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\ImportTraceFile.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\table_export_small.png" />
+    <None Include="Resources\Icons\table_export.ico" />
+    <None Include="Resources\spinner.gif" />
+    <None Include="Resources\Images\arrow_rotate_clockwise_small.png" />
+    <None Include="Resources\arrow_rotate_clockwise_small.png" />
+    <None Include="Resources\Images\arrow_rotate_clockwise_small1.png" />
+    <EmbeddedResource Include="..\..\DataViewer\bin\DataViewer.dll">
+      <Link>Resources\Assemblies\DataViewer.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\7zip\7za.exe" />
+    <None Include="Resources\Images\arrow_left.png" />
+    <None Include="Resources\Images\arrow_right.png" />
+    <None Include="Resources\Icons\drive_web.ico" />
+    <None Include="Resources\Images\drive_web_small.png" />
+    <EmbeddedResource Include="Resources\Sql\ExportSessionToSession.sql" />
+    <EmbeddedResource Include="Resources\Sql\GetObjectScript_IX.sql" />
+    <EmbeddedResource Include="Resources\Sql\GetLastEventStartTime.sql" />
+    <EmbeddedResource Include="Resources\Sql\StopFullTextPopulation.sql" />
+    <EmbeddedResource Include="..\..\ICSharpCode.TextEditor\bin\ICSharpCode.TextEditor.dll">
+      <Link>Resources\Assemblies\ICSharpCode.TextEditor.dll</Link>
+    </EmbeddedResource>
+    <None Include="Resources\Images\database_repeat_entry_small.png" />
+    <None Include="Resources\Images\update.png" />
+    <Content Include="SQLEventAnalyzer.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\Sql\DisableColumnStoreIndex.sql" />
+    <EmbeddedResource Include="Resources\Sql\EnableColumnStoreIndex.sql" />
+    <EmbeddedResource Include="Resources\Sql\RenameTable.sql" />
+    <None Include="Resources\Images\application_form_add.png" />
+    <None Include="Resources\Images\application_form_delete.png" />
+    <None Include="Resources\Images\star.png" />
+    <None Include="Resources\Images\star1.png" />
+    <EmbeddedResource Include="Resources\Sql\DoesTempTableExist.sql" />
+    <EmbeddedResource Include="Resources\Sql\GetNonDefaultColumnNames.sql" />
+    <EmbeddedResource Include="Resources\Sql\DeleteSession.sql" />
+    <EmbeddedResource Include="Resources\Sql\GetExistingConnections.sql" />
+    <EmbeddedResource Include="Resources\Sql\KillConnections.sql" />
+    <EmbeddedResource Include="Resources\Sql\ImportSession.sql" />
+    <EmbeddedResource Include="Resources\Sql\GetLastImportedFileName.sql" />
+    <EmbeddedResource Include="Resources\Sql\GetSessionInfo.sql" />
+    <None Include="Resources\Images\database.png" />
+    <None Include="Resources\Icons\stop.ico" />
+    <EmbeddedResource Include="TextDataCleaned.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sql\DropEventSession.sql" />
+    <EmbeddedResource Include="Resources\Sql\StopEventSession.sql" />
+    <EmbeddedResource Include="Resources\Sql\StartEventSessionRecording.sql" />
+    <EmbeddedResource Include="Resources\Sql\CreateEventSession.sql" />
+    <None Include="Resources\Images\XEvent.png" />
+    <EmbeddedResource Include="Resources\Sql\ImportExtendedEventsFile.sql" />
+    <EmbeddedResource Include="Resources\Sql\DropTempTable.sql" />
+    <EmbeddedResource Include="Resources\Sql\CreateTempTable.sql" />
+    <EmbeddedResource Include="Resources\Sql\CreateDatabase.sql" />
+    <None Include="Resources\Images\database_key_small.png" />
+    <None Include="Resources\Icons\clock.ico" />
+    <None Include="Resources\Icons\database_key.ico" />
+    <Content Include="Resources\Icons\report_key.ico" />
+    <None Include="Resources\Images\clock_small.png" />
+    <EmbeddedResource Include="Resources\Sql\GetGraphData.sql" />
+    <EmbeddedResource Include="Resources\Sql\GetStatistics.sql" />
+    <EmbeddedResource Include="Resources\Sql\CreateGetLogParameter.sql" />
+    <EmbeddedResource Include="Resources\Sql\CreateMatchLogParameter.sql" />
+    <None Include="SQLEventAnalyzer.docx" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SQLEventAnalyzer.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\report_key_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Profiler.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\GetTraceData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\GetTraceDataInfo.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\font.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\find_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\find.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cog_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\cog.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateIndexes.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\EnableFullText.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\StartFullTextPopulation.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\report_edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\report_edit_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\HandleColumns.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\EmptyColumns.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\HandleCLR.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateGetRegEx.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateMatchRegEx.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\GetCustomColumnsInfo.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\columns_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\columns.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\help.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\help_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\disk.png" />
+    <None Include="Resources\Images\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateGetStoredProcedureName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateGetStoredProcedureParameter.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateMatchStoredProcedureName.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateMatchStoredProcedureParameter.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\StartTraceRecording.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\StopDeleteTrace.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sql\CreateTrace.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\stop_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\control_pause.png" />
+    <None Include="Resources\Images\control_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\cmd.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cmd_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataViewer\DataViewer.csproj">
+      <Project>{e233298e-4316-4593-b200-59c96556f3f4}</Project>
+      <Name>DataViewer</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
+      <Project>{2d18be89-d210-49eb-a9dd-2246fbb3df6d}</Project>
+      <Name>ICSharpCode.TextEditor</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
